@@ -9,7 +9,7 @@ void OpenWindow()
 	{
 		glfwSetErrorCallback(
 			[](int error, const char* description) { std::cerr << "GLFW Error " + std::to_string(error) + ": " + std::string(description) << std::endl; });
-		window = glfwCreateWindow(640, 480, "Game Loop", NULL, NULL);
+		window = glfwCreateWindow(getWindowWidth(), getWindowHeight(), "Game Loop", NULL, NULL);
 		if (!window)
 		{
 			std::cerr << "Window creation failed!" << std::endl;
@@ -45,4 +45,14 @@ void CloseWindow()
 bool WindowShouldClose()
 {
 	return glfwWindowShouldClose(window);
+}
+
+int getWindowHeight()
+{
+	return 480;
+}
+
+int getWindowWidth()
+{
+	return 640;
 }

@@ -9,4 +9,7 @@ void CloseWindow();
 
 bool WindowShouldClose();
 
+int getWindowHeight();
+int getWindowWidth();
+
 static GLFWwindow* window;

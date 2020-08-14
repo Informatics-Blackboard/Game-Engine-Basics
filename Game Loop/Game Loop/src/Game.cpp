@@ -2,6 +2,7 @@
 
 #include "Game.h"
 #include "demonstration/Window.h"
+#include "demonstration/MovingBall.h"
 
 #include "loops/A_SimpleLoop.h"
 #include "loops/B_FixedTimestep.h"
@@ -17,6 +18,8 @@ void Game::Init()
 	mGameTime = NOW;
 
 	mRunning = true;
+
+	MovingBall::initBallPos(mGameTime);
 }
 
 // The game loop - updating & rendering
@@ -34,10 +37,15 @@ void Game::Cleanup()
 void Game::UpdateGame(TIME_UNIT timestep)
 {
 	mGameTime += timestep;
+	// Demonstration for logic update step
+	MovingBall::moveBallPos(mGameTime);
 }
 
 void Game::DisplayGame()
 {
+	// Demonstration for rendering step
+	MovingBall::displayBall();
+
 	UpdateWindow();
 }
 
