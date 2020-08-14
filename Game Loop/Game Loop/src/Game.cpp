@@ -25,7 +25,7 @@ void Game::Init()
 // The game loop - updating & rendering
 void Game::Run()
 {
-	Run_SimpleLoop(this);
+	Run_Frameskip(this);
 }
 
 // Freeing resources

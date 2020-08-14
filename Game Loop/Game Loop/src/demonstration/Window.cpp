@@ -9,6 +9,9 @@ void OpenWindow()
 	{
 		glfwSetErrorCallback(
 			[](int error, const char* description) { std::cerr << "GLFW Error " + std::to_string(error) + ": " + std::string(description) << std::endl; });
+
+		// Prevent 60FPS cap
+		glfwWindowHint(GLFW_DOUBLEBUFFER, GL_FALSE);
 		window = glfwCreateWindow(getWindowWidth(), getWindowHeight(), "Game Loop", NULL, NULL);
 		if (!window)
 		{
@@ -21,10 +24,7 @@ void OpenWindow()
 			std::cerr << "Loading OpenGL failed!" << std::endl;
 			return;
 		}
-
 		glfwSetWindowCloseCallback(window, [](GLFWwindow* window) { glfwSetWindowShouldClose(window, GLFW_TRUE); });
-
-		glfwSwapInterval(1);
 	}
 }
 
@@ -32,7 +32,7 @@ void UpdateWindow()
 {
 	if (!WindowShouldClose())
 	{
-		glfwSwapBuffers(window);
+		glFlush();
 		glfwPollEvents();
 	}
 }

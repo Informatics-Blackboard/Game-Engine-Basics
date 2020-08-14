@@ -2,4 +2,4 @@
 
 #include "Game.h"
 
-void Run_Framskip(Game* game);
+void Run_Frameskip(Game* game);
